@@ -1,14 +1,21 @@
 package com.shop.api.controller;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shop.api.entity.Product;
-import com.shop.api.exception.BusinessException;
 import com.shop.api.service.ProductService;
 
 @RestController
@@ -18,24 +25,16 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(path = "/search/{name}")
+    @GetMapping(path = "/search/{name}")
     @ResponseBody
-    public Object search(String name) {
-        try {
-            return productService.findByNameContaining(name);
-        } catch (BusinessException e) {
-            return e;
-        }
+    public Object search(@PathVariable @NotEmpty @Size(max=200) String name) {
+        return productService.findByNameContainingOrderByHotDesc(name);
     }
 
-    @RequestMapping(path = "/save")
-    @ResponseBody
-    public Object save(@RequestBody Product product) {
-        try {
-            return HttpStatus.CREATED;
-        } catch (BusinessException e) {
-            return e;
-        }
+    @PostMapping(path = "/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void save(@Valid @RequestBody Product product) {
+        productService.save(product);
     }
 
 }

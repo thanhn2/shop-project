@@ -10,6 +10,6 @@ import com.shop.api.entity.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    List<Product> findByNameContaining(String name);
+    List<Product> findByNameContainingOrderByHotDesc(String name);
 
 }
