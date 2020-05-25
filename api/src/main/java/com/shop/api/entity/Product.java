@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -35,7 +35,7 @@ public class Product {
     private String description;
 
     @NotNull
-    @DecimalMax("10.00")
+    @DecimalMin("1.00")
     @Column(name = "price")
     private BigDecimal price;
 
