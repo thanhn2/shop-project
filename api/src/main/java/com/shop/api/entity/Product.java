@@ -10,9 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Pattern;
 
 import lombok.Data;
 
@@ -27,8 +28,7 @@ public class Product {
     private Long id;
 
     @NotEmpty
-    @Size(max=200, message = "Name must be less than 200 characters")
-    @Column(name = "name")
+    @Column(name = "name", length = 200)
     private String name;
 
     @Column(name = "description")
@@ -40,6 +40,7 @@ public class Product {
     private BigDecimal price;
 
     @NotNull
+    @Min(1)
     @Column(name = "quantity")
     private Integer quantity;
 
@@ -47,8 +48,8 @@ public class Product {
     @Column(name = "discount")
     private Integer discount;
 
-    @Max(1)
-    @Column(name = "hot")
-    private Integer hot;
+    @Pattern(regexp = "0|1")
+    @Column(name = "hotFlg")
+    private String hotFlg;
 
 }
