@@ -14,6 +14,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.ColumnDefault;
 
 import lombok.Data;
 
@@ -28,6 +31,7 @@ public class Product {
     private Long id;
 
     @NotEmpty
+    @Size(min = 1, max = 200)
     @Column(name = "name", length = 200)
     private String name;
 
@@ -46,10 +50,12 @@ public class Product {
 
     @Max(100)
     @Column(name = "discount")
+    @ColumnDefault("0")
     private Integer discount;
 
     @Pattern(regexp = "0|1")
     @Column(name = "hotFlg")
+    @ColumnDefault("0")
     private String hotFlg;
 
 }

@@ -1,8 +1,8 @@
 package com.shop.api.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.shop.api.entity.Product;
@@ -16,9 +16,9 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public List<Product> findByNameContainingOrderByHotDesc(String name) {
+    public Page<Product> findByNameContainingOrderByHotFlgDesc(String name, Pageable pageable) {
         try {
-            return productRepository.findByNameContainingOrderByHotDesc(name);
+            return productRepository.findByNameContainingOrderByHotFlgDesc(name, pageable);
         } catch (Exception e) {
             throw new BusinessException("Exception search", e);
         }
