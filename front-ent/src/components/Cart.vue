@@ -29,18 +29,21 @@
     </div>
 
     <!-- Modal buy all -->
+    <BuyDetail></BuyDetail>
   </aside>
   <!-- /.blog-sidebar -->
 </template>
 
 <script>
-// import Buy-Detail from "./Buy-Detail.vue";
+import BuyDetail from "./BuyDetail.vue";
 
 export default {
   name: "Cart",
+  components: {
+    BuyDetail
+  },
   props: {
     msg: String
   }
-  // components: {}
 };
 </script>
