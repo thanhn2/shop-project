@@ -1,28 +1,56 @@
 <template>
-  <div id="app" class="container">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="app">
+    <div class="container">
+      <!-- Add -->
+      <Add></Add>
+      <!-- Header -->
+      <Header></Header>
+
+      <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8 blog-main">
+            <!-- Search -->
+            <Search></Search>
+
+            <!-- List -->
+            <List></List>
+          </div>
+          <!-- /.blog-main -->
+
+          <!-- Cart -->
+          <Cart></Cart>
+        </div>
+        <!-- /.row -->
+      </main>
+      <!-- /.container -->
+    </div>
+
+    <!-- Footer -->
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Add from "./components/Add.vue";
+import Header from "./components/Header.vue";
+import Search from "./components/Search.vue";
+import List from "./components/List.vue";
+import Cart from "./components/Cart.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    Add,
+    Header,
+    Search,
+    List,
+    Cart,
+    Footer
   }
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style src="@/assets/css/blog.css">
 </style>
