@@ -154,3 +154,21 @@ h6 {
 .list-buy li span:first-child {
   color: #007bff;
 }
+
+#insertBtn {
+  position: fixed;
+  top: 1rem;
+  right: 0;
+}
+
+.valuePadding {
+  position: absolute;
+  top: 0.41rem;
+  right: 3.2rem;
+  color: green;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}
